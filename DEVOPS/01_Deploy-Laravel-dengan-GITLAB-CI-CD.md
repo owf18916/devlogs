@@ -12,6 +12,16 @@ Cari baris terakhir, ubah isian di bagian <code>PasswordAuthentication </code> d
 PasswordAuthentication yes
 ```
 
+Apabila proses connect ssh gagal dengan pesan berikut :
+```
+Permission denied (publickey)
+```
+
+Maka lakukan perintah berikut dan ganti enable passwor auth nya menjadi YES :
+```
+sudo nano /etc/ssh/sshd_config.d/50-cloud-init.conf
+```
+
 Lakukan reload 
 ```
 sudo service sshd reload
@@ -49,6 +59,12 @@ sudo apt install docker-ce
 sudo systemctl status docker
 ```
 
+Masuk ke root terlebih dahulu
+```
+sudo su
+```
+
+Daftarkan user yang dimiliki agar bisa menggunakan service docker
 ```
 sudo usermod -aG docker ${USER}
 ```
@@ -76,7 +92,7 @@ chmod 777 -R /home/aplikasi/public
 ```
 login ke aplikasi sebagai deployer:
 ```
-sudo deployer
+su deployer
 ```
 Jalankan perintah untuk membuat pasangan private key dan public key
 ```
