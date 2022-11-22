@@ -119,6 +119,8 @@ certbot --apache -d resumerafif.com -d www.resumerafif.com -m dirumahrafif@gmail
 ### Menambahkan Variabel
 Buka bagian settings > CI/CD > Variables kemudian tambahkan variabel, misalnya diberi nama SSH_PRIVATE_KEY, dan isi didapatkan dari 
 ```
+# masuk ke deployer
+su deployer
 # pastikan sudah login sebagai user yang diberi akses ke folder aplikasi
 cat ~/.ssh/id_rsa
 ```
@@ -128,6 +130,9 @@ File htaccess bisa diambil dari [contoh file htaccess](https://gist.githubuserco
 ![Tambahkan variabel](https://raw.githubusercontent.com/dirumahrafif/devlogs/main/DEVOPS/images/1.png)
 ## 6. Buat Runner
 ```
+#masuk ke root
+sudo su
+
 docker run -d --name gitlab-runner --restart always -v /srv/gitlab-runner/config:/etc/gitlab-runner -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest
 ```
 Daftarkan runner
@@ -136,6 +141,7 @@ docker exec -it gitlab-runner gitlab-runner register
 ```
 
 ```
+#Masuk ke direktori applikasi dulu
 sudo usermod -aG docker deployer
 ```
 ## 7. Buka project Laravel
