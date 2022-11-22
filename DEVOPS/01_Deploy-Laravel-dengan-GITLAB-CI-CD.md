@@ -87,8 +87,8 @@ sudo apt install acl
 sudo setfacl -R -m u:deployer:rwx /home/aplikasi
 
 # set permission yang perlu di folder tujuan, saat sudah ada projectnya
-chmod 777 -R /home/aplikasi/storage
-chmod 777 -R /home/aplikasi/public
+chmod 777 -R /home/aplikasi/www/storage
+chmod 777 -R /home/aplikasi/www/public
 ```
 login ke aplikasi sebagai deployer:
 ```
